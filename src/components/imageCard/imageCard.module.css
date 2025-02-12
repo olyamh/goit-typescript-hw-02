@@ -1,0 +1,32 @@
+img{
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.imgContainer{
+  width: 200px; 
+  /* padding-bottom: 100%; */
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid rgb(40, 40, 87);
+}
+
+.imgContainer img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* width: 100%;
+  height: 100%; */
+  object-fit: cover; /* Зображення розтягується(стискається) до розміру контейнера */
+  border-radius: 15px; /* Заокруглені краї */
+  }
+
+  /* li{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+  }  */

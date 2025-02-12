@@ -1,0 +1,11 @@
+.ul{
+    display: flex;
+    max-width: 1320px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+ 
+}
