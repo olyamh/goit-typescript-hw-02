@@ -1,5 +1,5 @@
-import clsx from "clsx"
-import s from "./LoadMoreBtn.module.css"
+import clsx from "clsx";
+import s from "./LoadMoreBtn.module.css";
 
 const LoadMoreBtn = ({onClick}) => {
  return (

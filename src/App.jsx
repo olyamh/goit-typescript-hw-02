@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import "./App.css";
 import { fetchImages } from "./components/services/api";
 import ImageGallery from "./components/imageGallery/ImageGallery";
-import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreButton";
+import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreBtn";
 import Loader from "./components/loader/Loader";
 import ImageModal from "./components/imageModal/ImageModal";
 import ErrorMessage from "./components/errorMessage/ErrorMessage";
