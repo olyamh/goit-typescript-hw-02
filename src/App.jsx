@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Header from "./components/header/Header";
+import SearchBar from "./components/searchBar/SearchBar";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -9,6 +9,7 @@ import ImageGallery from "./components/imageGallery/ImageGallery";
 import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreButton";
 import Loader from "./components/loader/Loader";
 import ImageModal from "./components/imageModal/ImageModal";
+import ErrorMessage from "./components/errorMessage/ErrorMessage";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -17,6 +18,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalImage, setModalImage] = useState({});
+  const [isError, setIsError] = useState (false)
 
   useEffect(() => {
     if (!value) {
@@ -41,6 +43,7 @@ function App() {
         }
         setImages((prev) => [...prev, ...results]);
       } catch {
+        setIsError(true);
         toast.error("Hmm something went wrong. Please try later!", {
           duration: 2500,
           position: "top-center",
@@ -80,13 +83,13 @@ function App() {
 
   return (
     <>
-      <Header handleSetValue={handleSetValue} />
+      <SearchBar handleSetValue={handleSetValue} />
       <ImageGallery images={images} onImageClick={openModal} />
-      <Loader isLoading={isLoading} />
+      {isLoading && <Loader isLoading={isLoading} />}
       {images.length > 0 && images.length > images.length - 1 ? (
         <LoadMoreBtn onClick={handleSetPage} />
       ) : null}
-
+{isError && <ErrorMessage />}
       {modalIsOpen && (
         <ImageModal
           openModal={modalIsOpen}

@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import clsx from "clsx";
 import s from "./Header.module.css";
 
-const Header = ({ handleSetValue }) => {
+const SearchBar = ({ handleSetValue }) => {
   const [value, setValue] = useState("");
   const handleValue = (e) => {
     setValue(e.target.value.trim(""));
@@ -45,4 +45,4 @@ const Header = ({ handleSetValue }) => {
   );
 };
 
-export default Header;
+export default SearchBar;

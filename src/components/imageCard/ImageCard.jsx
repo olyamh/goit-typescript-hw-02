@@ -7,8 +7,8 @@ const ImageCard = ({ data, onImageClick }) => {
       <div className={clsx(s.imgContaner)}>
         <img
           src={data.urls.full}
-          alt={data.alt_dscription}
-          onClick={() => onImageClick(data.urls.full)}
+          alt={data.alt_description}
+          onClick={() => onImageClick(data.urls.small)}
         ></img>{" "}
       </div>
     </li>
