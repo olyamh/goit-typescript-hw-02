@@ -27,6 +27,7 @@ function App() {
 
     const getData = async () => {
       setIsLoading(true);
+      setIsError(false);
 
       try {
         const { results } = await fetchImages(value, page);
@@ -86,7 +87,7 @@ function App() {
       <SearchBar handleSetValue={handleSetValue} />
       <ImageGallery images={images} onImageClick={openModal} />
       {isLoading && <Loader isLoading={isLoading} />}
-      {images.length > 0 && images.length > images.length - 1 ? (
+      {images.length > 0 && !isLoading ? (
         <LoadMoreBtn onClick={handleSetPage} />
       ) : null}
 {isError && <ErrorMessage />}

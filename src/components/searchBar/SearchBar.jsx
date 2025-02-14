@@ -21,6 +21,7 @@ const SearchBar = ({ handleSetValue }) => {
           fontSize: 16,
         },
       });
+      return;
     }
 
     handleSetValue(value);
