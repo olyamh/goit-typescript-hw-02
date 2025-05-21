@@ -4,7 +4,14 @@ import clsx from "clsx";
 
 Modal.setAppElement("#root");
 
-const ImageModal = ({ openModal, modalImage, isClose }) => {
+interface ImageModalProps {
+  openModal: boolean;
+  modalImage: string;
+  isClose: (event: React.MouseEvent | React.KeyboardEvent)=> void;
+}
+
+
+const ImageModal: React.FC <ImageModalProps> = ({ openModal, modalImage, isClose }) => {
   return (
     <Modal
       isOpen={openModal}

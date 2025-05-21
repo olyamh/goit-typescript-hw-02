@@ -1,7 +1,15 @@
+import React from "react";
 import s from "./imageCard.module.css";
 import clsx from "clsx";
+import { ImageResult } from "../../types";
 
-const ImageCard = ({ data, onImageClick }) => {
+interface ImageCardProp {
+    data: ImageResult;
+    onImageClick: (image: string) => void;
+}
+
+
+const ImageCard : React.FC<ImageCardProp> = ({ data, onImageClick }) => {
   return (
     <li>
       <div className={clsx(s.imgContaner)}>

@@ -1,7 +1,12 @@
+import React from 'react';
 import { MagnifyingGlass } from 'react-loader-spinner';
 
+interface LoaderProps{
+  isLoading: boolean;
 
-const Loader = ({isLoading}) => {
+}
+
+const Loader: React.FC<LoaderProps> = ({isLoading}) => {
   return  <MagnifyingGlass
   visible={isLoading}
   height="80"

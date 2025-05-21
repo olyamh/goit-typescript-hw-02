@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import toast from "react-hot-toast";
 import clsx from "clsx";
 import s from "./Header.module.css";
 
-const SearchBar = ({ handleSetValue }) => {
-  const [value, setValue] = useState("");
-  const handleValue = (e) => {
-    setValue(e.target.value.trim(""));
+interface SearchBarProp{
+  handleSetValue:(newValue:string)=> void;
+}
+
+const SearchBar : React.FC<SearchBarProp> = ({ handleSetValue }) => {
+  const [value, setValue] = useState<string>("");
+  const handleValue = (e:ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value.trim());
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!value) {
       toast("Oops the request is empty! Fill the field with your request!", {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, FormEvent } from "react";
 import SearchBar from "./components/searchBar/SearchBar";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -10,15 +10,18 @@ import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreBtn";
 import Loader from "./components/loader/Loader";
 import ImageModal from "./components/imageModal/ImageModal";
 import ErrorMessage from "./components/errorMessage/ErrorMessage";
+import {ImageResult, UnsplashApiResponse} from "./types";
+
+
 
 function App() {
-  const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [value, setValue] = useState("");
-  const [page, setPage] = useState(1);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalImage, setModalImage] = useState({});
-  const [isError, setIsError] = useState (false)
+  const [images, setImages] = useState<ImageResult[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [value, setValue] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [modalImage, setModalImage] = useState<string | null>(null);
+  const [isError, setIsError] = useState<boolean> (false)
 
   useEffect(() => {
     if (!value) {
@@ -30,7 +33,7 @@ function App() {
       setIsError(false);
 
       try {
-        const { results } = await fetchImages(value, page);
+        const { results } : UnsplashApiResponse= await fetchImages(value, page);
         if (results.length === 0) {
           toast.error("Sorry, no pictures have found for your request!", {
             duration: 2500,
@@ -62,7 +65,7 @@ function App() {
     getData();
   }, [value, page]);
 
-  const handleSetValue = (newValue) => {
+  const handleSetValue = (newValue : string) => {
     setValue(newValue);
     setPage(1);
     setImages([]);
@@ -72,13 +75,13 @@ function App() {
     setPage((prev) => prev + 1);
   };
 
-  const openModal = (modalImage) => {
+  const openModal = (modalImage : string) : void => {
     setModalImage(modalImage);
     setModalIsOpen(true);
   };
 
-  const closeModal = () => {
-    setModalImage({});
+  const closeModal = () : void => {
+    setModalImage(null);
     setModalIsOpen(false);
   };
 
@@ -91,7 +94,7 @@ function App() {
         <LoadMoreBtn onClick={handleSetPage} />
       ) : null}
 {isError && <ErrorMessage />}
-      {modalIsOpen && (
+      {modalIsOpen && modalImage && (
         <ImageModal
           openModal={modalIsOpen}
           modalImage={modalImage}
