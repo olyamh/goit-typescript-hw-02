@@ -9,5 +9,4 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Toaster />
     <App />
-  </React.StrictMode>,
-)
+  </React.StrictMode>)
